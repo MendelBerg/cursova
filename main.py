@@ -1,16 +1,31 @@
-# This is a sample Python script.
+from collections import namedtuple
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+Notes = namedtuple("Notes", "code name position subcharpet exp money")
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def put_data(file_name, staff):
+    with open(f"data/{file_name}.txt", "w") as file:
+        for worker in staff:
+            file.write(
+                f'{worker.code}, {worker.name}, {worker.position}, '
+                f'{worker.subcharpet}, {worker.exp}, {worker.money}\n'
+            )
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+def input_note():
+    put_data('data', [
+        Notes(
+            input(f'The person #{_ + 1}\nCode: '),
+            input('Name: '),
+            input('Position: '),
+            input('Subcharpet: '),
+            input('Experience: '),
+            input('Money: ')
+        )
+        for _ in range(
+            int(input('Amount of staff: '))
+        )
+    ])
+
+
+input_note()
