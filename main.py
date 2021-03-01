@@ -13,7 +13,7 @@ def put_data(file_name, staff):
 
 
 def input_note():
-    put_data('data', [
+    put_data('notes', [
         Notes(
             input(f'The person #{_ + 1}\nCode: '),
             input('Name: '),
@@ -28,4 +28,21 @@ def input_note():
     ])
 
 
-input_note()
+def get_arr_notes(file_name):
+    with open(f'data/{file_name}.txt', 'r') as file:
+        return [
+            Notes(
+                code=worker[0],
+                name=worker[1],
+                position=worker[2],
+                subcharpet=worker[3],
+                exp=worker[4],
+                money=int(worker[5].replace('\n', ''))
+            )
+            for worker in [
+                file.readline().split(', ')
+                for _ in range(
+                    sum(1 for _ in open(f'data/{file_name}.txt', 'r'))
+                )
+            ]
+        ]
