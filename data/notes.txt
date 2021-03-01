@@ -1,3 +1,7 @@
 a, a, a, a, a, 1
 b, b, b, b, b, 2
-c, c, c, c, c, 3
+c, ca, c, a, c, 3
+d, da, c, a, c, 3
+e, ec, c, c, c, 3
+f, fa, c, a, c, 3
+g, gc, c, c, c, 3
