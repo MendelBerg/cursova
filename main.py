@@ -89,7 +89,4 @@ def show_notes_filter(filtered_notes):
 
 def get_middle_age_staff(staff):
     from datetime import datetime as date
-    return date.now().year - sum([worker.birth_year for worker in staff]) / len(staff)
-
-
-input_note()
+    print(date.now().year - round(sum([worker.birth_year for worker in staff]) / len(staff)))
