@@ -69,7 +69,8 @@ def get_arr_notes():
             Notes(
                 *x.split(', ')[:2],
                 int(x.split(', ')[2]),
-                *x.split(', ')[3:-1],
+                *x.split(', ')[3:-2],
+                int(x.split(', ')[-2]),
                 int(x.split(', ')[-1])
             ) for x in file
         ]
@@ -96,4 +97,17 @@ def get_middle_age_staff(staff):
           )
 
 
-get_middle_age_staff(get_notes_filter('a', get_arr_notes()))
+# get_middle_age_staff(get_notes_filter('a', get_arr_notes()))
+
+
+def small_exp(staff):
+    for bypass in range(1, len(staff)):
+        for i in range(len(staff) - bypass):
+            if staff[i].exp > staff[i + 1].exp:
+                staff[i], staff[i + 1] = staff[i + 1], staff[i]
+
+    for x in staff[:int(len(staff) * .5)]:
+        print(x.exp)
+
+
+# small_exp(get_arr_notes())
