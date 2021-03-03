@@ -75,8 +75,8 @@ def get_arr_notes():
         ]
 
 
-def get_notes_filter(unit):
-    workers = [worker for worker in get_arr_notes() if worker.unit == unit]
+def get_notes_filter(unit, staff):
+    workers = [worker for worker in staff if worker.unit == unit]
     return workers if len(workers) != 0 else 0
 
 
@@ -89,4 +89,11 @@ def show_notes_filter(filtered_notes):
 
 def get_middle_age_staff(staff):
     from datetime import datetime as date
-    print(date.now().year - round(sum([worker.birth_year for worker in staff]) / len(staff)))
+    print(date.now().year - round(sum(
+        [
+            worker.birth_year for worker in staff
+        ]) / len(staff))
+          )
+
+
+get_middle_age_staff(get_notes_filter('a', get_arr_notes()))
