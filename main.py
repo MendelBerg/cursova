@@ -6,19 +6,19 @@ Notes = namedtuple("Notes", "code name birth_year position unit exp money")
 def get_input_notes_arr(func):
     def wrapper():
         func([
-                Notes(
-                    input(f'The worker #{_ + 1}\nCode: '),
-                    input('Name: '),
-                    input('Birth year: '),
-                    input('Position: '),
-                    input('Unit: '),
-                    input('Experience: '),
-                    input('Money: ')
-                )
-                for _ in range(
-                    int(input('Amount of staff: '))
-                )
-            ]
+            Notes(
+                input(f'The worker #{_ + 1}\nCode: '),
+                input('Name: '),
+                input('Birth year: '),
+                input('Position: '),
+                input('Unit: '),
+                input('Experience: '),
+                input('Money: ')
+            )
+            for _ in range(
+                int(input('Amount of staff: '))
+            )
+        ]
         )
 
     return wrapper
@@ -67,17 +67,20 @@ def show_notes_filter(notes):
     if notes:
         print(*[worker.name for worker in notes], sep='\n')
     else:
-        print('Error!\nThis unit does not exists.')
+        print('Error!\nThis unit does not exist.')
 
 
 @get_notes_filter
-def get_middle_age_staff(staff):
-    from datetime import datetime as date
-    print(
-        date.now().year - round(
-            sum([worker.birth_year for worker in staff]) / len(staff)
+def show_middle_age_staff(staff):
+    if not staff:
+        print('Error!\nThis unit does not exist.')
+    else:
+        from datetime import datetime as date
+        print(
+            date.now().year - round(
+                sum([worker.birth_year for worker in staff]) / len(staff)
+            )
         )
-    )
 
 
 @get_arr_notes
