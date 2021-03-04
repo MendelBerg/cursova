@@ -46,24 +46,28 @@ def get_arr_notes(func):
     return wrapper
 
 
-@get_arr_notes
-def get_notes_filter(staff):
-    unit = input('Which unit do you find: ')
-    workers = [worker for worker in staff if worker.unit == unit]
-    return workers if len(workers) != 0 else 0
+def get_notes_filter(func):
+    @get_arr_notes
+    def wrapper(staff):
+        unit = input('Which unit do you find: ')
+        workers = [worker for worker in staff if worker.unit == unit]
+        notes = workers if len(workers) != 0 else 0
+        return func(notes)
+
+    return wrapper
 
 
-def show_notes_filter():
-    notes = get_notes_filter()
+@get_notes_filter
+def show_notes_filter(notes):
     if notes:
         print(*[worker.name for worker in notes], sep='\n')
     else:
         print('Error!\nThis unit does not exists.')
 
 
-def get_middle_age_staff():
+@get_notes_filter
+def get_middle_age_staff(staff):
     from datetime import datetime as date
-    staff = get_notes_filter()
     print(
         date.now().year - round(
             sum([worker.birth_year for worker in staff]) / len(staff)
