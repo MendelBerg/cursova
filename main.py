@@ -3,26 +3,31 @@ from collections import namedtuple
 Notes = namedtuple("Notes", "code name birth_year position unit exp money")
 
 
-def get_input_notes_arr():
-    return [
-        Notes(
-            input(f'The worker #{_ + 1}\nCode: '),
-            input('Name: '),
-            input('Birth year: '),
-            input('Position: '),
-            input('Unit: '),
-            input('Experience: '),
-            input('Money: ')
+def get_input_notes_arr(func):
+    def wrapper():
+        func([
+                Notes(
+                    input(f'The worker #{_ + 1}\nCode: '),
+                    input('Name: '),
+                    input('Birth year: '),
+                    input('Position: '),
+                    input('Unit: '),
+                    input('Experience: '),
+                    input('Money: ')
+                )
+                for _ in range(
+                    int(input('Amount of staff: '))
+                )
+            ]
         )
-        for _ in range(
-            int(input('Amount of staff: '))
-        )
-    ]
+
+    return wrapper
 
 
-def put_data():
+@get_input_notes_arr
+def put_data(notes):
     with open(f"data/notes.txt", "a") as file:
-        for worker in get_input_notes_arr():
+        for worker in notes:
             file.write(
                 f'{worker.code}, {worker.name}, {worker.birth_year}, {worker.position}, '
                 f'{worker.unit}, {worker.exp}, {worker.money}\n'
