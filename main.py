@@ -6,7 +6,7 @@ Notes = namedtuple("Notes", "code name birth_year position unit exp money")
 def get_input_notes_arr():
     return [
         Notes(
-            input(f'The person #{_ + 1}\nCode: '),
+            input(f'The worker #{_ + 1}\nCode: '),
             input('Name: '),
             input('Birth year: '),
             input('Position: '),
@@ -20,10 +20,9 @@ def get_input_notes_arr():
     ]
 
 
-# put_data(get_input_notes_arr())
-def put_data(staff):
-    with open(f"data/notes.txt", "w") as file:
-        for worker in staff:
+def put_data():
+    with open(f"data/notes.txt", "a") as file:
+        for worker in get_input_notes_arr():
             file.write(
                 f'{worker.code}, {worker.name}, {worker.birth_year}, {worker.position}, '
                 f'{worker.unit}, {worker.exp}, {worker.money}\n'
@@ -43,23 +42,23 @@ def get_arr_notes():
         ]
 
 
-# get_notes_filter('unit', get_arr_notes())
-def get_notes_filter(unit, staff):
-    workers = [worker for worker in staff if worker.unit == unit]
+def get_notes_filter():
+    unit = input('Which unit do you find: ')
+    workers = [worker for worker in get_arr_notes() if worker.unit == unit]
     return workers if len(workers) != 0 else 0
 
 
-# show_notes_filter(get_notes_filter('unit', get_arr_notes()))
-def show_notes_filter(filtered_notes):
-    if filtered_notes:
-        print(*[worker.name for worker in filtered_notes], sep='\n')
+def show_notes_filter():
+    notes = get_notes_filter()
+    if notes:
+        print(*[worker.name for worker in notes], sep='\n')
     else:
         print('Error!\nThis unit does not exists.')
 
 
-# get_middle_age_staff(get_notes_filter('unit', get_arr_notes()))
-def get_middle_age_staff(staff):
+def get_middle_age_staff():
     from datetime import datetime as date
+    staff = get_notes_filter()
     print(
         date.now().year - round(
             sum([worker.birth_year for worker in staff]) / len(staff)
@@ -67,12 +66,12 @@ def get_middle_age_staff(staff):
     )
 
 
-# show_small_exp(get_arr_notes())
-def show_small_exp(staff):
+def show_small_exp():
+    staff = get_arr_notes()
     for bypass in range(1, len(staff)):
         for i in range(len(staff) - bypass):
             if staff[i].exp > staff[i + 1].exp:
                 staff[i], staff[i + 1] = staff[i + 1], staff[i]
 
-    for x in staff[:int(len(staff) * .5)]:
+    for x in staff[:int(len(staff) * .5)]:  # only 50% of staff
         print(x.name)
