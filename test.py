@@ -7,7 +7,7 @@ import main as m
 # m.show_notes_filter()
 
 # print('Middle age')
-# m.show_middle_age_staff()
+# m.show_middle_age()
 
 # print('Small experience')
 # m.show_small_exp()

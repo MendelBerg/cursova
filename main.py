@@ -71,7 +71,7 @@ def show_notes_filter(notes):
 
 
 @get_notes_filter
-def show_middle_age_staff(staff):
+def show_middle_age(staff):
     if not staff:
         print('Error!\nThis unit does not exist.')
     else:
