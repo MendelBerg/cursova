@@ -3,20 +3,10 @@ from collections import namedtuple
 Notes = namedtuple("Notes", "code name birth_year position unit exp money")
 
 
-# put_data(get_input_notes_arr())
-def put_data(staff):
-    with open(f"data/notes.txt", "w") as file:
-        for worker in staff:
-            file.write(
-                f'{worker.code}, {worker.name}, {worker.birth_year}, {worker.position}, '
-                f'{worker.unit}, {worker.exp}, {worker.money}\n'
-            )
-
-
 def get_input_notes_arr():
     return [
         Notes(
-            input(f'\nThe person #{_ + 1}\nCode: '),
+            input(f'The person #{_ + 1}\nCode: '),
             input('Name: '),
             input('Birth year: '),
             input('Position: '),
@@ -28,6 +18,16 @@ def get_input_notes_arr():
             int(input('Amount of staff: '))
         )
     ]
+
+
+# put_data(get_input_notes_arr())
+def put_data(staff):
+    with open(f"data/notes.txt", "w") as file:
+        for worker in staff:
+            file.write(
+                f'{worker.code}, {worker.name}, {worker.birth_year}, {worker.position}, '
+                f'{worker.unit}, {worker.exp}, {worker.money}\n'
+            )
 
 
 def get_arr_notes():
@@ -75,4 +75,4 @@ def show_small_exp(staff):
                 staff[i], staff[i + 1] = staff[i + 1], staff[i]
 
     for x in staff[:int(len(staff) * .5)]:
-        print(x.exp)
+        print(x.name)
