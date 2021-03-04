@@ -29,22 +29,27 @@ def put_data():
             )
 
 
-def get_arr_notes():
-    with open('data/notes.txt', 'r') as file:
-        return [
-            Notes(
-                *x.split(', ')[:2],
-                int(x.split(', ')[2]),
-                *x.split(', ')[3:-2],
-                int(x.split(', ')[-2]),
-                int(x.split(', ')[-1])
-            ) for x in file
-        ]
+def get_arr_notes(func):
+    def wrapper():
+        with open('data/notes.txt', 'r') as file:
+            staff = [
+                Notes(
+                    *x.split(', ')[:2],
+                    int(x.split(', ')[2]),
+                    *x.split(', ')[3:-2],
+                    int(x.split(', ')[-2]),
+                    int(x.split(', ')[-1])
+                ) for x in file
+            ]
+        return func(staff)
+
+    return wrapper
 
 
-def get_notes_filter():
+@get_arr_notes
+def get_notes_filter(staff):
     unit = input('Which unit do you find: ')
-    workers = [worker for worker in get_arr_notes() if worker.unit == unit]
+    workers = [worker for worker in staff if worker.unit == unit]
     return workers if len(workers) != 0 else 0
 
 
@@ -66,8 +71,8 @@ def get_middle_age_staff():
     )
 
 
-def show_small_exp():
-    staff = get_arr_notes()
+@get_arr_notes
+def show_small_exp(staff):
     for bypass in range(1, len(staff)):
         for i in range(len(staff) - bypass):
             if staff[i].exp > staff[i + 1].exp:
