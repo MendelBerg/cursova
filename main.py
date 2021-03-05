@@ -92,3 +92,12 @@ def show_small_exp(staff):
 
     for x in staff[:int(len(staff) * .5)]:  # only 50% of staff
         print(x.name)
+
+
+def sort_notes(option, staff):
+    for bypass in range(1, len(staff)):
+        for i in range(len(staff) - bypass):
+            if staff[i].option > staff[i + 1].option:
+                staff[i], staff[i + 1] = staff[i + 1], staff[i]
+
+    return staff
