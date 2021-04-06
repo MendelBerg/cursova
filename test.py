@@ -5,9 +5,12 @@ import main as m
 #
 # print('Filter data')
 # m.show_notes_filter()
+# print()
 #
 # print('Middle age')
 # m.show_middle_age()
-#
-# print('Small experience')
-# m.show_small_exp()
+# print()
+
+print('Small experience')
+m.show_small_exp()
+print()

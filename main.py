@@ -37,18 +37,12 @@ def put_data(notes):
 def get_arr_notes(func):
     def wrapper():
         with open('data/notes.txt', 'r') as file:
-            staff = [
-                Notes(
-                    *x.split(', ')[:2],
-                    int(x.split(', ')[2]),
-                    *x.split(', ')[3:-2],
-                    int(x.split(', ')[-2]),
-                    int(x.split(', ')[-1])
-                ) for x in file
-            ]
-
-        return func(staff)
-
+            return func([
+                    Notes(
+                        *[int(y) if y.strip().isdigit() else y for y in x.split(', ')]
+                    ) for x in file
+                ]
+            )
     return wrapper
 
 
@@ -86,10 +80,9 @@ def show_middle_age(staff):
 
 @get_arr_notes
 def show_small_exp(staff):
-    for bypass in range(1, len(staff)):
-        for i in range(len(staff) - bypass):
-            if staff[i].exp > staff[i + 1].exp:
-                staff[i], staff[i + 1] = staff[i + 1], staff[i]
+    min_exp = 0
+    for i in range(1, len(staff)):
+        if staff[min_exp].exp > staff[i].exp:
+            min_exp = i
 
-    for x in staff[:int(len(staff) * .5)]:  # only 50% of staff
-        print(x.name)
+    print(staff[min_exp].name)
