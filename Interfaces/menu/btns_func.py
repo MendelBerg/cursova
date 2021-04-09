@@ -21,4 +21,12 @@ def btn_click_age():
 
 def btn_click_exp():
     window['bg'] = 'pink'
-    # c.content['text'] = show_small_exp()
+    content = c.create_frame_content()
+    text_arr = []
+    for worker in e.show_small_exp():
+        year = 'рік' if worker.exp % 10 == 1 \
+            else 'роки' if worker.exp % 10 == 2 or worker.exp % 10 == 3 or worker.exp % 10 == 4 \
+            else 'років'
+        text_arr.append(f'Працівник {worker.name}, підрозділ {worker.unit}, стаж {worker.exp} {year}.\n')
+
+    content['text'] = ''.join(text_arr).strip()
