@@ -1,6 +1,6 @@
 from Interfaces.init import *
-from tools import *
 import Interfaces.content.main_content as c
+import Interfaces.content.experience as e
 
 
 def btn_click_main():
@@ -21,4 +21,4 @@ def btn_click_age():
 
 def btn_click_exp():
     window['bg'] = 'pink'
-    c.content['text'] = show_small_exp()
+    # c.content['text'] = show_small_exp()

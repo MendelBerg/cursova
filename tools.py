@@ -52,7 +52,7 @@ def get_notes_filter(func):
         unit = input('Which unit do you find: ')
         workers = [worker for worker in staff if worker.unit == unit]
         notes = workers if len(workers) != 0 else 0
-        return func(notes)
+        return func(notes, unit)
 
     return wrapper
 
