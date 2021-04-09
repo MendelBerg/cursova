@@ -36,7 +36,7 @@ def put_data(notes):
 
 def get_arr_notes(func):
     def wrapper():
-        with open('data/notes.txt', 'r') as file:
+        with open('../data/notes.txt', 'r') as file:
             return func([
                     Notes(
                         *[int(y) if y.strip().isdigit() else y for y in x.split(', ')]
