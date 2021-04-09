@@ -2,7 +2,7 @@ from Interfaces.init import *
 
 
 def btn_click_main():
-    window['bg'] = '#6A6A6A'
+    window['bg'] = 'green'
 
 
 def btn_click_put():

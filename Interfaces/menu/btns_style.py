@@ -2,7 +2,8 @@ from Interfaces.menu.btns_func import *
 
 menu = tk.Frame(window)
 
-btn_main = tk.Button(menu, text="Головна", borderwidth='3', relief='solid', command=lambda: btn_active(btn_click_main)(btn_main))
+btn_main = tk.Button(menu, text="Головна", borderwidth='3', relief='groove',
+                     command=lambda: btn_active(btn_click_main)(btn_main))
 btn_put = tk.Button(menu, text="Створити запис", borderwidth='3', relief='groove',
                     command=lambda: btn_active(btn_click_put)(btn_put))
 btn_get_staff = tk.Button(menu, text="Список працівників", borderwidth='3', relief='groove',
@@ -23,6 +24,7 @@ menu['bg'] = '#9A9A9A'
 
 menu_btn_arr = [btn_main, btn_put, btn_get_staff, btn_get_age, btn_get_exp]
 
+
 def passive_btn():
     for btn in menu_btn_arr:
         btn['borderwidth'] = 3
@@ -37,3 +39,6 @@ def btn_active(func):
         func()
 
     return wrapper
+
+
+btn_active(btn_click_main)(btn_main)
