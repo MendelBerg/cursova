@@ -1,6 +1,6 @@
-import tkinter as tk
+from  tkinter import *
 
-window = tk.Tk()
+window = Tk()
 window.title("Підприємство \"Снігова корова\"")
 window['bg'] = '#6A6A6A'
 window.geometry('750x450')
