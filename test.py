@@ -1,4 +1,4 @@
-import main as m
+import tools as t
 
 # print('Save notes in file')
 # m.put_data()
@@ -12,5 +12,5 @@ import main as m
 # print()
 
 print('Small experience')
-m.show_small_exp()
+t.show_small_exp()
 print()

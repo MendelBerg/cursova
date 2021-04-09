@@ -26,7 +26,7 @@ frame.place(relx=0.15, rely=0.15, relwidth=0.7, relheight=0.7)
 
 title = Label(frame, text='Text', bg='yellow', font=40)
 title.pack()
-btn = Button(frame, text='Button', bg='brown', command=btn_click)
+btn = Button(frame, text='Button', bg='brown', command=btn_click, style='W.TButton')
 btn.pack()
 
 loginInput = Entry(frame, bg='white')
