@@ -1,17 +1,17 @@
-from tkinter import *
+import tkinter as tk
 
-master = Tk()
-master.title("Диалоговое окно в Tkinter")
-master.columnconfigure(1, weight=1)
-master.columnconfigure(3, pad=7)
-master.rowconfigure(3, weight=1)
-master.rowconfigure(5, pad=7)
+window = tk.Tk()
 
-lbl = Label(master, text="Окна")
-lbl.grid(sticky=W, pady=4, padx=5)
+frame_a = tk.Frame()
+frame_b = tk.Frame()
 
-area = Label(master,text="Окна2")
-area.grid(row=0, column=1, columnspan=2, rowspan=4, padx=5, sticky=E + W + S + N)
+label_a = tk.Label(master=frame_a, text="I'm in Frame A")
+label_a.pack()
 
+label_b = tk.Label(master=frame_b, text="I'm in Frame B")
+label_b.pack()
 
-master.mainloop()
+frame_a.pack()
+frame_b.pack()
+
+window.mainloop()

@@ -1,6 +1,6 @@
 from Interfaces.menu.btns_func import *
 
-menu = Frame(window)
+menu = Frame()
 
 btn_main = Button(menu, text="Головна", borderwidth='3', relief='groove',
                      command=lambda: btn_active(btn_click_main)(btn_main))
@@ -21,6 +21,8 @@ btn_get_exp.grid(row=4, column=0, sticky="ew", padx=5, pady=5)
 
 menu.grid(row=0, column=0, sticky="ns")
 menu['bg'] = '#9A9A9A'
+
+
 
 menu_btn_arr = [btn_main, btn_put, btn_get_staff, btn_get_age, btn_get_exp]
 
