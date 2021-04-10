@@ -1,17 +1,13 @@
 from Interfaces.menu.btns_func import *
 from Interfaces.init import *
+
 menu = Frame()
 
-btn_main = Button(menu, text="Головна", borderwidth='3', relief='groove',
-                     command=lambda: btn_active(btn_click_main)(btn_main))
-btn_put = Button(menu, text="Створити запис", borderwidth='3', relief='groove',
-                    command=lambda: btn_active(btn_click_put)(btn_put))
-btn_get_staff = Button(menu, text="Список працівників", borderwidth='3', relief='groove',
-                          command=lambda: btn_active(btn_click_staff)(btn_get_staff))
-btn_get_age = Button(menu, text="Середній вік", borderwidth='3', relief='groove',
-                        command=lambda: btn_active(btn_click_age)(btn_get_age))
-btn_get_exp = Button(menu, text="Найменший стаж", borderwidth='3', relief='groove',
-                        command=lambda: btn_active(btn_click_exp)(btn_get_exp))
+btn_main = Button(menu, text="Головна", command=lambda: btn_active(btn_click_main)(btn_main))
+btn_put = Button(menu, text="Створити запис", command=lambda: btn_active(btn_click_put)(btn_put))
+btn_get_staff = Button(menu, text="Список працівників", command=lambda: btn_active(btn_click_staff)(btn_get_staff))
+btn_get_age = Button(menu, text="Середній вік", command=lambda: btn_active(btn_click_age)(btn_get_age))
+btn_get_exp = Button(menu, text="Найменший стаж", command=lambda: btn_active(btn_click_exp)(btn_get_exp))
 
 btn_main.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
 btn_put.grid(row=1, column=0, sticky="ew", padx=5, pady=5)
