@@ -12,9 +12,9 @@ def btn_click_put():
 
 
 def btn_click_staff():
-    from Interfaces.content.staff_list import show_select
+    from Interfaces.content.staff_list import create_select
     frame = create_frame_content('Список працівників\n\nОберіть категорію')[1]
-    show_select(frame)
+    create_select(frame)
 
 
 def btn_click_age():
