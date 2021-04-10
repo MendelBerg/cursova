@@ -7,17 +7,17 @@ import Interfaces.content.input as i
 
 
 def btn_click_main():
-    content = t.create_frame_content()[0]
-    content['text'] = 'Дані про працівників ТОВ "Снігова корова"'
+    t.create_frame_content('Дані про працівників ТОВ "Снігова корова"')
 
 
 def btn_click_put():
-    window['bg'] = 'blue'
-    i.create_input()
+    frame = t.create_frame_content('Створити запис')[1]
+    i.create_input(frame)
 
 
 def btn_click_staff():
-    s.show_select()
+    frame = t.create_frame_content('Оберіть категорію')[1]
+    s.show_select(frame)
 
 
 def btn_click_age():
@@ -25,7 +25,7 @@ def btn_click_age():
 
 
 def fill_content(data):
-    content = t.create_frame_content()[0]
+    content = t.create_frame_content('')[0]
     text_arr = []
 
     for row in data:

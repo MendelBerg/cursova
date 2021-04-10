@@ -4,9 +4,7 @@ from Interfaces.init import *
 import tools as t
 
 
-def create_input():
-    menu2 = t.create_frame_content()[1]
-
+def create_input(frame):
     labels = [
         "Код:",
         "Имя:",
@@ -19,15 +17,15 @@ def create_input():
 
     entries_arr = []
     for text in labels:
-        Label(master=menu2, text=text).pack(pady=5)
-        entry = Entry(menu2, width=25)
+        Label(master=frame, text=text).pack(pady=5)
+        entry = Entry(frame, width=25)
         entry.pack()
         entries_arr.append(entry)
 
-    frm_buttons = Button(menu2, text='Clear', command=lambda: clear_data(entries_arr))
+    frm_buttons = Button(frame, text='Clear', command=lambda: clear_data(entries_arr))
     frm_buttons.pack(side=LEFT, padx=80, ipadx=10)
 
-    btn_submit = Button(menu2, text="Submit", command=lambda: put_data(entries_arr))
+    btn_submit = Button(frame, text="Submit", command=lambda: put_data(entries_arr))
     btn_submit.pack(side=RIGHT, padx=80, ipadx=10)
 
 

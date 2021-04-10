@@ -4,9 +4,9 @@ from tkinter import *
 Notes = namedtuple("Notes", "code name birth_year position unit exp money")
 
 
-def create_frame_content():
+def create_frame_content(title):
     menu2 = Frame()
-    content = Label(menu2)
+    content = Label(menu2, text=title)
     content.pack()
     menu2.place(relx=0.24, rely=0, relwidth=0.76, relheight=1)
     menu2['bg'] = 'red'

@@ -36,25 +36,18 @@ def get_workers_name(click):
 label_exists = None
 
 
-def show_select():
-    menu2 = Frame()
-    content = Label(menu2, text='Choose unit')
-    content.pack()
-
-    menu2.place(relx=0.24, rely=0, relwidth=0.76, relheight=1)
-    menu2['bg'] = 'red'
-    menu2['width'] = '500'
+def show_select(frame):
 
     options = get_units()
 
     clicked = StringVar()
     clicked.set(options[0])
 
-    drop = OptionMenu(menu2, clicked, *options)
+    drop = OptionMenu(frame, clicked, *options)
     drop.pack(pady=20)
 
-    btn = Button(menu2, text='select',
-                 command=lambda: create_label(menu2, get_workers_name(clicked.get())))
+    btn = Button(frame, text='select',
+                 command=lambda: create_label(frame, get_workers_name(clicked.get())))
     btn.pack(pady=20)
 
 
