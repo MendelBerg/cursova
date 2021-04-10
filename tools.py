@@ -15,6 +15,10 @@ def create_frame_content(title):
     return [content, menu2]
 
 
+def create_btn(frame, text, command):
+    return Button(frame, text=text, command=command)
+
+
 def get_arr_notes():
     with open('../data/notes.txt', 'r') as file:
         return [

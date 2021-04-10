@@ -20,8 +20,8 @@ def create_select(frame):
     drop = OptionMenu(frame, clicked, *options)
     drop.pack(pady=20)
 
-    btn = Button(frame, text='select',
-                 command=lambda: create_label(frame, get_workers_name(clicked.get())))
+    btn = create_btn(frame, 'select',
+                     lambda: create_label(frame, get_workers_name(clicked.get())))
     btn.pack(pady=20)
 
 

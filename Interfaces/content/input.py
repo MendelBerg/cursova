@@ -1,5 +1,6 @@
-from tkinter import *
-from tkinter import messagebox
+from tkinter import (Label, Entry, Button,
+                     messagebox, LEFT, RIGHT)
+from tools import create_btn
 
 
 def put_data(entries_arr):
@@ -22,15 +23,8 @@ def clear_data(entries_arr):
 
 
 def create_input(frame):
-    labels = [
-        "Код:",
-        "Имя:",
-        "Рік народження:",
-        "Посада:",
-        "Підрозділ",
-        "Досвід роботи (в роках)",
-        "Зарплатня",
-    ]
+    labels = ["Код:", "ПІБ:", "Рік народження:", "Посада:",
+              "Підрозділ", "Досвід роботи (в роках)", "Зарплатня"]
 
     entries_arr = []
     for text in labels:
@@ -39,8 +33,8 @@ def create_input(frame):
         entry.pack()
         entries_arr.append(entry)
 
-    frm_buttons = Button(frame, text='Clear', command=lambda: clear_data(entries_arr))
+    frm_buttons = create_btn(frame, 'Clear', lambda: clear_data(entries_arr))
     frm_buttons.pack(side=LEFT, padx=80, ipadx=10)
 
-    btn_submit = Button(frame, text="Submit", command=lambda: put_data(entries_arr))
+    btn_submit = create_btn(frame, "Submit", lambda: put_data(entries_arr))
     btn_submit.pack(side=RIGHT, padx=80, ipadx=10)
