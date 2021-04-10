@@ -1,7 +1,10 @@
+from tkinter.ttk import Combobox
+
 from Interfaces.init import *
 import Interfaces.content.main_content as c
 import Interfaces.content.experience as e
 import Interfaces.content.middle_age as m
+import Interfaces.content.staff_list as s
 
 
 def btn_click_main():
@@ -11,10 +14,14 @@ def btn_click_main():
 
 def btn_click_put():
     window['bg'] = 'blue'
+    content = c.create_frame_content()
 
 
 def btn_click_staff():
     window['bg'] = 'brown'
+    content = c.create_frame_content()
+    frame = c.create_frame_content()
+    s.show_select(frame)
 
 
 def btn_click_age():
