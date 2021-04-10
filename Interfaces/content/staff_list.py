@@ -31,14 +31,10 @@ def get_workers_name(click):
     for worker in workers:
         text_arr.append(f'{worker.name}.\n')
 
-    return [''.join(sort_data(text_arr)).strip(), click]
-
-    # myLabel = Label(frame)
-    # myLabel['text'] = ''.join(sort_data(text_arr)).strip()
-    # myLabel.pack()
+    return ''.join(sort_data(text_arr)).strip()
 
 
-
+label_exists = None
 
 
 def show_select():
@@ -58,33 +54,17 @@ def show_select():
     drop = OptionMenu(menu2, clicked, *options)
     drop.pack(pady=20)
 
-    btn = Button(menu2, text='select', command=lambda: create_label(*get_workers_name(clicked.get())))
+    btn = Button(menu2, text='select',
+                 command=lambda: create_label(menu2, get_workers_name(clicked.get())))
     btn.pack(pady=20)
 
 
+def create_label(frame, text):
+    global label_exists
 
+    if label_exists:
+        label_exists.destroy()
 
-def create_label(text, click):
-    menu2 = Frame()
-    content = Label(menu2, text='Choose unit')
-    content.pack()
-
-    menu2.place(relx=0.24, rely=0, relwidth=0.76, relheight=1)
-    menu2['bg'] = 'red'
-    menu2['width'] = '500'
-
-    options = get_units()
-
-    clicked = StringVar()
-    print(click)
-    clicked.set(options[options.index(click)])
-
-    drop = OptionMenu(menu2, clicked, *options)
-    drop.pack(pady=20)
-
-    btn = Button(menu2, text='select', command=lambda: create_label(*get_workers_name(clicked.get())))
-    btn.pack(pady=20)
-
-    myLabel = Label(menu2)
-    myLabel['text'] = text
-    myLabel.pack()
+    label_exists = Label(frame)
+    label_exists['text'] = text
+    label_exists.pack()
