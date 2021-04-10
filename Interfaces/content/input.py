@@ -29,20 +29,27 @@ def create_input():
         entry.pack()
         entries_arr.append(entry)
 
-    frm_buttons = Button(menu2, text='Clear', command=lambda: create_input())
+    frm_buttons = Button(menu2, text='Clear', command=lambda: clear_data(entries_arr))
     frm_buttons.pack(side=LEFT, padx=80, ipadx=10)
 
-    btn_submit = Button(menu2, text="Submit", command=lambda: put_data([e.get() for e in entries_arr]))
+    btn_submit = Button(menu2, text="Submit", command=lambda: put_data(entries_arr))
     btn_submit.pack(side=RIGHT, padx=80, ipadx=10)
 
 
-def put_data(notes):
+def put_data(entries_arr):
+    notes = [e.get() for e in entries_arr]
     if '' in notes:
         messagebox.showwarning(title='Обережно!', message='Ви заповнили не всы поля!')
     else:
         with open(f"../data/notes.txt", "a") as file:
             file.write(', '.join(notes).strip(', ') + '\n')
 
-        create_input()
         messagebox.showinfo(title='Title', message='Данні збереглися!')
+        clear_data(entries_arr)
 
+
+def clear_data(entries_arr):
+    for entry in entries_arr:
+        entry.delete(0, 'end')
+
+    entries_arr[0].focus_set()
