@@ -5,6 +5,7 @@ import Interfaces.content.main_content as c
 import Interfaces.content.experience as e
 import Interfaces.content.middle_age as m
 import Interfaces.content.staff_list as s
+import Interfaces.content.input as i
 
 
 def btn_click_main():
@@ -14,8 +15,8 @@ def btn_click_main():
 
 def btn_click_put():
     window['bg'] = 'blue'
-    content = c.create_frame_content()
-
+    # content = c.create_frame_content()
+    i.create_input()
 
 def btn_click_staff():
     # window['bg'] = 'brown'
