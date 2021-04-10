@@ -1,4 +1,4 @@
-from  tkinter import *
+from tkinter import *
 
 window = Tk()
 window.title("Підприємство \"Снігова корова\"")
