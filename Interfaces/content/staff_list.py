@@ -25,15 +25,20 @@ def get_units():
     return sort_data([*set([x.unit for x in get_arr_notes()])])
 
 
-def get_workers_name(frame, click):
+def get_workers_name(click):
     workers = [worker for worker in get_arr_notes() if worker.unit == click]
-    myLabel = Label(frame)
     text_arr = []
     for worker in workers:
         text_arr.append(f'{worker.name}.\n')
 
-    myLabel['text'] = ''.join(sort_data(text_arr)).strip()
-    myLabel.pack()
+    return [''.join(sort_data(text_arr)).strip(), click]
+
+    # myLabel = Label(frame)
+    # myLabel['text'] = ''.join(sort_data(text_arr)).strip()
+    # myLabel.pack()
+
+
+
 
 
 def show_select():
@@ -53,5 +58,13 @@ def show_select():
     drop = OptionMenu(menu2, clicked, *options)
     drop.pack(pady=20)
 
-    btn = Button(menu2, text='select', command=lambda: get_workers_name(menu2, clicked.get()))
+    btn = Button(menu2, text='select', command=lambda: create_label(menu2, *get_workers_name(clicked.get())))
     btn.pack(pady=20)
+
+
+
+
+def create_label(frame, text, click):
+    myLabel = Label(frame)
+    myLabel['text'] = text
+    myLabel.pack()
