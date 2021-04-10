@@ -10,7 +10,7 @@ def put_data(entries_arr):
         with open(f"../data/notes.txt", "a") as file:
             file.write(', '.join(notes).strip(', ') + '\n')
 
-        messagebox.showinfo(title='Title', message='Данні збереглися!')
+        messagebox.showinfo(title='Title', message='Дані збережено!')
         clear_data(entries_arr)
 
 
