@@ -1,3 +1,5 @@
+from tkinter import messagebox
+
 from Interfaces.init import *
 
 
@@ -30,8 +32,17 @@ def create_input():
     frm_buttons = Button(menu2, text='Clear', command=lambda: create_input())
     frm_buttons.pack(side=LEFT, padx=80, ipadx=10)
 
-    btn_submit = Button(menu2, text="Submit", command=lambda: get_data())
+    btn_submit = Button(menu2, text="Submit", command=lambda: put_data([e.get() for e in arr]))
     btn_submit.pack(side=RIGHT, padx=80, ipadx=10)
 
-    def get_data():
-        print([e.get() for e in arr])
+
+def put_data(notes):
+    if '' in notes:
+        messagebox.showwarning(title='Обережно!', message='Ви заповнили не всы поля!')
+    else:
+        with open(f"../data/notes.txt", "a") as file:
+            file.write(', '.join(notes).strip(', ') + '\n')
+
+        create_input()
+        messagebox.showinfo(title='Title', message='Данні збереглися!')
+
