@@ -42,7 +42,7 @@ def show_select():
         for worker in workers:
             text_arr.append(f'{worker.name}.\n')
 
-        myLabel['text'] = ''.join(text_arr).strip()
+        myLabel['text'] = ''.join(sort_data(text_arr)).strip()
         myLabel.pack()
 
     options = get_units()
