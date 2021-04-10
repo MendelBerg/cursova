@@ -78,7 +78,11 @@ def sort_data(staff):
 
 
 def get_units():
-    return sort_data([*set([x.unit for x in get_arr_notes()])])
+    return set([x.unit for x in get_arr_notes()])
+
+
+def filter_by_unit(unit):
+    return [worker for worker in get_arr_notes() if worker.unit == unit]
 
 # def get_notes_filter(func):
 #     @get_arr_notes

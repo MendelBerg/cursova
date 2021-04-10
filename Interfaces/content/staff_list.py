@@ -4,16 +4,15 @@ label_exists = None
 
 
 def get_workers_name(unit):
-    workers = [worker for worker in get_arr_notes() if worker.unit == unit]
     text_arr = []
-    for worker in workers:
+    for worker in filter_by_unit(unit):
         text_arr.append(f'{worker.name}.\n')
 
     return ''.join(sort_data(text_arr)).strip()
 
 
 def create_select(frame):
-    options = get_units()
+    options = sort_data([*get_units()])
 
     clicked = StringVar()
     clicked.set(options[0])
