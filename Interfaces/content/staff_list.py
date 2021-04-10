@@ -2,17 +2,13 @@ from Interfaces.init import *
 from tools import *
 
 
-def get_arr_notes(func):
-    def wrapper():
-        with open('../data/notes.txt', 'r') as file:
-            return func([
-                Notes(
-                    *[int(y) if y.strip().isdigit() else y for y in x.split(', ')]
-                ) for x in file
-            ]
-            )
-
-    return wrapper
+def get_arr_notes():
+    with open('../data/notes.txt', 'r') as file:
+        return [
+            Notes(
+                *[int(y) if y.strip().isdigit() else y for y in x.split(', ')]
+            ) for x in file
+        ]
 
 
 def sort_data(staff):
@@ -25,9 +21,19 @@ def sort_data(staff):
     return staff
 
 
-@get_arr_notes
-def get_units(staff):
-    return sort_data([*set([x.unit for x in staff])])
+def get_units():
+    return sort_data([*set([x.unit for x in get_arr_notes()])])
+
+
+def get_workers_name(frame, click):
+    workers = [worker for worker in get_arr_notes() if worker.unit == click]
+    myLabel = Label(frame)
+    text_arr = []
+    for worker in workers:
+        text_arr.append(f'{worker.name}.\n')
+
+    myLabel['text'] = ''.join(sort_data(text_arr)).strip()
+    myLabel.pack()
 
 
 def show_select():
@@ -39,17 +45,6 @@ def show_select():
     menu2['bg'] = 'red'
     menu2['width'] = '500'
 
-    @get_arr_notes
-    def callbackFunc(staff):
-        workers = [worker for worker in staff if worker.unit == clicked.get()]
-        myLabel = Label(menu2)
-        text_arr = []
-        for worker in workers:
-            text_arr.append(f'{worker.name}.\n')
-
-        myLabel['text'] = ''.join(sort_data(text_arr)).strip()
-        myLabel.pack()
-
     options = get_units()
 
     clicked = StringVar()
@@ -58,5 +53,5 @@ def show_select():
     drop = OptionMenu(menu2, clicked, *options)
     drop.pack(pady=20)
 
-    btn = Button(menu2, text='select', command=callbackFunc)
+    btn = Button(menu2, text='select', command=lambda: get_workers_name(menu2, clicked.get()))
     btn.pack(pady=20)
