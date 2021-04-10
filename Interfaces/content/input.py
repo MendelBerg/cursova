@@ -1,5 +1,5 @@
-from tkinter import (Label, Entry, Button,
-                     messagebox, LEFT, RIGHT)
+from tkinter import (Label, Entry, messagebox,
+                     LEFT, RIGHT)
 from tools import create_btn
 
 

@@ -18,12 +18,17 @@ def btn_click_staff():
 
 
 def btn_click_age():
-    from Interfaces.content.middle_age import show_middle_age
+    from Interfaces.content.middle_age_exp import show_middle_age
     fill_content(show_middle_age(), 'середній вік')
 
 
+def btn_click_exp():
+    from Interfaces.content.middle_age_exp import show_small_exp
+    fill_content(show_small_exp(), 'найменший досвід')
+
+
 def fill_content(data, title):
-    content = create_frame_content('')[0]
+    label = create_frame_content('')[0]
     text_arr = []
 
     for worker in data:
@@ -33,12 +38,7 @@ def fill_content(data, title):
                         f'Працівник {worker["name"]}, підрозділ "{worker["unit"].capitalize()}", стаж {worker["years"]} {year}.\n '
                         )
 
-    content['text'] = f"Данні про {title} працівників\n\n{''.join(text_arr).strip()}"
-
-
-def btn_click_exp():
-    from Interfaces.content.experience import show_small_exp
-    fill_content(show_small_exp(), 'найменший досвід')
+    label['text'] = f"Данні про {title} працівників\n\n{''.join(text_arr).strip()}"
 
 
 def add_end_year(num):
