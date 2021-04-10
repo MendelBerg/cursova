@@ -8,11 +8,11 @@ def get_workers_name(unit):
     for worker in filter_by_unit(unit):
         text_arr.append(f'{worker.name}.\n')
 
-    return ''.join(sort_data(text_arr)).strip()
+    return ''.join(sort_arr(text_arr)).strip()
 
 
 def create_select(frame):
-    options = sort_data([*get_units()])
+    options = sort_arr([*get_units()])
 
     clicked = StringVar()
     clicked.set(options[0])

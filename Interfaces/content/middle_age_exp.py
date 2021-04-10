@@ -15,7 +15,7 @@ def show_small_exp():
         min_exp_staff.append({'name': worker.name, 'unit': worker.unit, 'years': worker.exp})
         min_exp = 0
 
-    return sort_data_it(min_exp_staff, 'name')
+    return sort_dict(min_exp_staff, 'name')
 
 
 def show_middle_age():
@@ -31,10 +31,10 @@ def show_middle_age():
             )
         })
 
-    return sort_data_it(middle_age_arr, 'unit')
+    return sort_dict(middle_age_arr, 'unit')
 
 
-def sort_data_it(staff, key):
+def sort_dict(staff, key):
     for top in range(1, len(staff)):
         i = top
         while i > 0 and staff[i - 1][key] > staff[i][key]:

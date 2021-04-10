@@ -28,7 +28,7 @@ def get_arr_notes():
         ]
 
 
-def sort_data(staff):
+def sort_arr(staff):
     for top in range(1, len(staff)):
         i = top
         while i > 0 and staff[i - 1] > staff[i]:
