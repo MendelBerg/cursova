@@ -31,5 +31,5 @@ def create_label(frame, text):
     if label_exists:
         label_exists.destroy()
 
-    label_exists = Label(frame, text=text)
+    label_exists = Label(frame, text=text, bg=content_bg)
     label_exists.pack()

@@ -2,14 +2,15 @@ from collections import namedtuple
 from tkinter import *
 
 Notes = namedtuple("Notes", "code name birth_year position unit exp money")
+content_bg = '#58595B'
 
 
 def create_frame_content(title):
     content = Frame()
-    label = Label(content, text=title)
+    label = Label(content, text=title, bg=content_bg)
     label.pack()
     content.place(relx=0.24, rely=0, relwidth=0.76, relheight=1)
-    content['bg'] = 'red'
+    content['bg'] = content_bg
     content['width'] = '500'
 
     return [label, content]

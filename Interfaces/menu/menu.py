@@ -6,7 +6,7 @@ from tools import create_btn
 def passive_btn():
     for BTN in menu_btn_arr:
         BTN['borderwidth'] = 3
-        BTN['relief'] = 'groove'
+        BTN['relief'] = 'ridge'
 
 
 def btn_active(func):
@@ -17,7 +17,7 @@ def btn_active(func):
     return wrapper
 
 
-menu = Frame(bg='#9A9A9A')
+menu = Frame(bg='#6D6E71')
 menu.grid(row=0, column=0, sticky="ns")
 
 
