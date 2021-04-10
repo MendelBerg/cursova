@@ -1,5 +1,6 @@
 from Interfaces.init import *
 
+
 def create_input():
     menu2 = Frame()
     content = Label(menu2, text='Put data')
@@ -19,14 +20,18 @@ def create_input():
         "Зарплатня",
     ]
 
+    arr = []
     for text in labels:
         Label(master=menu2, text=text).pack(pady=5)
-        Entry(master=menu2, width=25).pack()
+        entry = Entry(menu2, width=25)
+        entry.pack()
+        arr.append(entry)
 
     frm_buttons = Button(menu2, text='Clear', command=lambda: create_input())
     frm_buttons.pack(side=LEFT, padx=80, ipadx=10)
 
-    btn_submit = Button(menu2, text="Submit")
+    btn_submit = Button(menu2, text="Submit", command=lambda: get_data())
     btn_submit.pack(side=RIGHT, padx=80, ipadx=10)
 
-
+    def get_data():
+        print([e.get() for e in arr])
