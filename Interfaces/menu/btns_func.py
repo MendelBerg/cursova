@@ -1,31 +1,29 @@
-from Interfaces.init import *
-import tools as t
-import Interfaces.content.experience as e
-import Interfaces.content.middle_age as m
-import Interfaces.content.staff_list as s
-import Interfaces.content.input as i
+from tools import create_frame_content
 
 
 def btn_click_main():
-    t.create_frame_content('Дані про працівників ТОВ "Снігова корова"')
+    create_frame_content('Дані про працівників ТОВ "Снігова корова"')
 
 
 def btn_click_put():
-    frame = t.create_frame_content('Створити запис')[1]
-    i.create_input(frame)
+    from Interfaces.content.input import create_input
+    frame = create_frame_content('Створити запис')[1]
+    create_input(frame)
 
 
 def btn_click_staff():
-    frame = t.create_frame_content('Список працівників\n\nОберіть категорію')[1]
-    s.show_select(frame)
+    from Interfaces.content.staff_list import show_select
+    frame = create_frame_content('Список працівників\n\nОберіть категорію')[1]
+    show_select(frame)
 
 
 def btn_click_age():
-    fill_content(m.show_middle_age(), 'середній вік')
+    from Interfaces.content.middle_age import show_middle_age
+    fill_content(show_middle_age(), 'середній вік')
 
 
 def fill_content(data, title):
-    content = t.create_frame_content('')[0]
+    content = create_frame_content('')[0]
     text_arr = []
 
     for row in data:
@@ -39,7 +37,8 @@ def fill_content(data, title):
 
 
 def btn_click_exp():
-    fill_content(e.show_small_exp(), 'найменший досвід')
+    from Interfaces.content.experience import show_small_exp
+    fill_content(show_small_exp(), 'найменший досвід')
 
 
 def add_end_year(num):
