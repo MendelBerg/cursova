@@ -16,15 +16,15 @@ def btn_click_put():
 
 
 def btn_click_staff():
-    frame = t.create_frame_content('Оберіть категорію')[1]
+    frame = t.create_frame_content('Список працівників\n\nОберіть категорію')[1]
     s.show_select(frame)
 
 
 def btn_click_age():
-    fill_content(m.show_middle_age())
+    fill_content(m.show_middle_age(), 'середній вік')
 
 
-def fill_content(data):
+def fill_content(data, title):
     content = t.create_frame_content('')[0]
     text_arr = []
 
@@ -35,11 +35,11 @@ def fill_content(data):
                         f'Працівник {row[2]}, підрозділ "{row[0].capitalize()}", стаж {row[1]} {year}.\n '
                         )
 
-    content['text'] = ''.join(text_arr).strip()
+    content['text'] = f"Данні про {title} працівників\n\n{''.join(text_arr).strip()}"
 
 
 def btn_click_exp():
-    fill_content(e.show_small_exp())
+    fill_content(e.show_small_exp(), 'найменший досвід')
 
 
 def add_end_year(num):
