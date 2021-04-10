@@ -11,19 +11,18 @@ def show_select(frame):
     menu2['bg'] = 'red'
     menu2['width'] = '500'
 
-    fontExample = ("Courier", 16, "bold")
-    comboExample = Combobox(menu2,
-                            values=[
-                                "January",
-                                "February",
-                                "March",
-                                "April"],
-                            font=fontExample,
-                            # postcommand=lambda: 'hello'
-                            )
+    options = [
+        'a',
+        'b',
+        'c'
+    ]
 
-    menu2.option_add('*TCombobox*Listbox.font', fontExample)
+    clicked = StringVar()
+    clicked.set(options[1])
 
-    comboExample.grid(column=3, row=0)
-    content.grid(row=0, column=3, sticky="nsew")
-    # content.pack()
+    drop = OptionMenu(menu2, clicked, *options)
+    drop.pack(pady=20)
+
+
+# def callbackFunc(event):
+#     print("New Element Selected")
