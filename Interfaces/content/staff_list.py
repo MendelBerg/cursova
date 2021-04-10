@@ -25,24 +25,27 @@ def sort_data(staff):
 
 @get_arr_notes
 def get_units(staff):
-    units = sort_data([*set([x.unit for x in staff])])
-    print(units)
+    return sort_data([*set([x.unit for x in staff])])
 
-def show_select(frame):
+def show_select():
     menu2 = Frame()
     content = Label(menu2, text="Choose your favourite month")
     menu2.place(relx=0.24, rely=0, relwidth=0.76, relheight=1)
     menu2['bg'] = 'red'
     menu2['width'] = '500'
 
-    def callbackFunc():
-        # myLabel = Label(menu2, text=clicked.get()).pack()
-        get_units()
-    options = [
-        'a',
-        'b',
-        'c'
-    ]
+    @get_arr_notes
+    def callbackFunc(staff):
+        workers = [worker for worker in staff if worker.unit == clicked.get()]
+        myLabel = Label(menu2)
+        text_arr = []
+        for worker in workers:
+            text_arr.append(f'{worker.name}.\n')
+
+        myLabel['text'] = ''.join(text_arr).strip()
+        myLabel.pack()
+
+    options = get_units()
 
     clicked = StringVar()
     clicked.set(options[0])

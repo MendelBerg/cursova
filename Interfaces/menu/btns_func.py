@@ -18,10 +18,10 @@ def btn_click_put():
 
 
 def btn_click_staff():
-    window['bg'] = 'brown'
-    content = c.create_frame_content()
-    frame = c.create_frame_content()
-    s.show_select(frame)
+    # window['bg'] = 'brown'
+    # content = c.create_frame_content()
+    # frame = c.create_frame_content()
+    s.show_select()
 
 
 def btn_click_age():
