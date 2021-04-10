@@ -26,11 +26,11 @@ def fill_content(data, title):
     content = create_frame_content('')[0]
     text_arr = []
 
-    for row in data:
-        year = add_end_year(row[1])
-        text_arr.append(f'Підрозділ "{row[0].capitalize()}", {row[1]} {year}.\n'
+    for worker in data:
+        year = add_end_year(worker['years'])
+        text_arr.append(f'Підрозділ "{worker["unit"].capitalize()}", {worker["years"]} {year}.\n'
                         if len(data[0]) == 2 else
-                        f'Працівник {row[2]}, підрозділ "{row[0].capitalize()}", стаж {row[1]} {year}.\n '
+                        f'Працівник {worker["name"]}, підрозділ "{worker["unit"].capitalize()}", стаж {worker["years"]} {year}.\n '
                         )
 
     content['text'] = f"Данні про {title} працівників\n\n{''.join(text_arr).strip()}"

@@ -10,6 +10,7 @@ def get_arr_notes(func):
                 ) for x in file
             ]
             )
+
     return wrapper
 
 
@@ -25,7 +26,9 @@ def show_small_exp(staff):
             if workers_by_unit[min_exp].exp > workers_by_unit[i].exp:
                 min_exp = i
 
-        min_exp_staff.append([workers_by_unit[min_exp].unit, workers_by_unit[min_exp].exp, workers_by_unit[min_exp].name])
+        worker = workers_by_unit[min_exp]
+
+        min_exp_staff.append({'name': worker.name, 'unit': worker.unit, 'years': worker.exp})
         min_exp = 0
 
     return sort_data(min_exp_staff)
@@ -34,10 +37,8 @@ def show_small_exp(staff):
 def sort_data(staff):
     for top in range(1, len(staff)):
         i = top
-        while i > 0 and staff[i - 1][2] > staff[i][2]:
+        while i > 0 and staff[i - 1]['name'] > staff[i]['name']:
             staff[i], staff[i - 1] = staff[i - 1], staff[i]
             i -= 1
 
     return staff
-
-

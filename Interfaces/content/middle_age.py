@@ -23,9 +23,10 @@ def show_middle_age(staff):
     for unit in units:
         workers_by_unit = [worker for worker in staff if worker.unit == unit]
         middle_age_arr.append(
-            [unit, date.now().year - round(
-                     sum([worker.birth_year for worker in workers_by_unit]) / len(workers_by_unit)
-            )]
+            {'unit': unit, "years":
+                date.now().year - round(
+                    sum([worker.birth_year for worker in workers_by_unit]) / len(workers_by_unit)
+                )}
         )
 
     return sort_data(middle_age_arr)
@@ -34,7 +35,7 @@ def show_middle_age(staff):
 def sort_data(arr):
     for top in range(1, len(arr)):
         i = top
-        while i > 0 and arr[i - 1][0] > arr[i][0]:
+        while i > 0 and arr[i - 1]["unit"] > arr[i]["unit"]:
             arr[i], arr[i - 1] = arr[i - 1], arr[i]
             i -= 1
     return arr

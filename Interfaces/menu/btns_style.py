@@ -1,5 +1,5 @@
 from Interfaces.menu.btns_func import *
-
+from Interfaces.init import *
 menu = Frame()
 
 btn_main = Button(menu, text="Головна", borderwidth='3', relief='groove',
