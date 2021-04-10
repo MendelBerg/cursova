@@ -1,4 +1,4 @@
-from menu.btns_style import *
+from menu.menu import *
 import content.main_content as c
 from Interfaces.init import *
 

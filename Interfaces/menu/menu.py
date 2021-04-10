@@ -11,10 +11,8 @@ def passive_btn():
 def btn_active(func):
     def wrapper(btn):
         passive_btn()
-        btn['borderwidth'] = 3
         btn['relief'] = "solid"
         func()
-
     return wrapper
 
 
