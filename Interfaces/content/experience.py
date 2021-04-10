@@ -1,33 +1,17 @@
 from tools import *
 
 
-def get_arr_notes(func):
-    def wrapper():
-        with open('../data/notes.txt', 'r') as file:
-            return func([
-                Notes(
-                    *[int(y) if y.strip().isdigit() else y for y in x.split(', ')]
-                ) for x in file
-            ]
-            )
-
-    return wrapper
-
-
-@get_arr_notes
-def show_small_exp(staff):
-    units = set([x.unit for x in staff])
+def show_small_exp():
     min_exp_staff = []
     min_exp = 0
-    for unit in units:
-        workers_by_unit = [worker for worker in staff if worker.unit == unit]
 
-        for i in range(1, len(workers_by_unit)):
-            if workers_by_unit[min_exp].exp > workers_by_unit[i].exp:
+    for unit in get_units():
+        workers = filter_by_unit(unit)
+        for i in range(1, len(workers)):
+            if workers[min_exp].exp > workers[i].exp:
                 min_exp = i
 
-        worker = workers_by_unit[min_exp]
-
+        worker = workers[min_exp]
         min_exp_staff.append({'name': worker.name, 'unit': worker.unit, 'years': worker.exp})
         min_exp = 0
 
