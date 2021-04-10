@@ -12,7 +12,7 @@ def create_frame_content():
     menu2['bg'] = 'red'
     menu2['width'] = '500'
 
-    return content
+    return [content, menu2]
 
 
 def get_input_notes_arr(func):

@@ -7,7 +7,7 @@ import Interfaces.content.input as i
 
 
 def btn_click_main():
-    content = t.create_frame_content()
+    content = t.create_frame_content()[0]
     content['text'] = 'Дані про працівників ТОВ "Снігова корова"'
 
 
@@ -21,7 +21,7 @@ def btn_click_staff():
 
 
 def btn_click_age():
-    content = t.create_frame_content()
+    content = t.create_frame_content()[0]
     text_arr = []
     for unit, age in m.show_middle_age():
         year = 'рік' if age % 10 == 1 and age != 11 \
@@ -33,7 +33,7 @@ def btn_click_age():
 
 
 def btn_click_exp():
-    content = t.create_frame_content()
+    content = t.create_frame_content()[0]
     text_arr = []
     for worker in e.show_small_exp():
         year = 'рік' if worker.exp % 10 == 1 \

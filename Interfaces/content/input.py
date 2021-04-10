@@ -1,16 +1,11 @@
 from tkinter import messagebox
 
 from Interfaces.init import *
+import tools as t
 
 
 def create_input():
-    menu2 = Frame()
-    content = Label(menu2, text='Put data')
-    content.grid(row=0, column=3, sticky="nsew")
-    content.pack()
-    menu2.place(relx=0.24, rely=0, relwidth=0.76, relheight=1)
-    menu2['bg'] = 'red'
-    menu2['width'] = '500'
+    menu2 = t.create_frame_content()[1]
 
     labels = [
         "Код:",
