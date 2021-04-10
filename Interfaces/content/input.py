@@ -22,17 +22,17 @@ def create_input():
         "Зарплатня",
     ]
 
-    arr = []
+    entries_arr = []
     for text in labels:
         Label(master=menu2, text=text).pack(pady=5)
         entry = Entry(menu2, width=25)
         entry.pack()
-        arr.append(entry)
+        entries_arr.append(entry)
 
     frm_buttons = Button(menu2, text='Clear', command=lambda: create_input())
     frm_buttons.pack(side=LEFT, padx=80, ipadx=10)
 
-    btn_submit = Button(menu2, text="Submit", command=lambda: put_data([e.get() for e in arr]))
+    btn_submit = Button(menu2, text="Submit", command=lambda: put_data([e.get() for e in entries_arr]))
     btn_submit.pack(side=RIGHT, padx=80, ipadx=10)
 
 
