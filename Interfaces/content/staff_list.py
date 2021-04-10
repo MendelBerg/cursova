@@ -18,10 +18,12 @@ def show_select(frame):
                                 "February",
                                 "March",
                                 "April"],
-                            font=fontExample)
+                            font=fontExample,
+                            # postcommand=lambda: 'hello'
+                            )
 
     menu2.option_add('*TCombobox*Listbox.font', fontExample)
 
-    comboExample.grid(column=0, row=1)
+    comboExample.grid(column=3, row=0)
     content.grid(row=0, column=3, sticky="nsew")
-    content.pack()
+    # content.pack()
