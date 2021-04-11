@@ -25,7 +25,7 @@ def get_arr_notes():
     with open('../data/notes.txt', 'r') as file:
         return [
             Notes(
-                *[int(y) if y.strip().isdigit() else y for y in x.split(', ')]
+                *[int(y) if y.strip().isdigit() else y.title() for y in x.split(', ')]
             ) for x in file
         ]
 
