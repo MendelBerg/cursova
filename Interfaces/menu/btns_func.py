@@ -7,14 +7,12 @@ def btn_click_main():
 
 def btn_click_put():
     from Interfaces.content.input import create_input
-    frame = create_frame_content('Створити запис')[1]
-    create_input(frame)
+    create_input(create_frame_content('Створити запис')['frame'])
 
 
 def btn_click_staff():
     from Interfaces.content.staff_list import create_select
-    frame = create_frame_content('Список працівників\n\nОберіть категорію')[1]
-    create_select(frame)
+    create_select(create_frame_content('Список працівників\n\nОберіть категорію')['frame'])
 
 
 def btn_click_age():

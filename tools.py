@@ -14,7 +14,7 @@ def create_frame_content(title, size=font_title):
     content['bg'] = content_bg
     content['width'] = '500'
 
-    return [label, content]
+    return {'label': label, 'frame': content}
 
 
 def create_btn(frame, text, command):
