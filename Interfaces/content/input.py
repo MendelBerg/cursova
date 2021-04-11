@@ -1,5 +1,4 @@
-from tkinter import (Label, Entry, messagebox,
-                     LEFT, RIGHT)
+from tkinter import Entry, messagebox, LEFT, RIGHT
 from tools import create_btn, create_label
 
 
