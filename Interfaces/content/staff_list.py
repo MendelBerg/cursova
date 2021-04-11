@@ -18,11 +18,11 @@ def create_select(frame):
     clicked.set(options[0])
 
     drop = OptionMenu(frame, clicked, *options)
-    drop.pack(pady=20)
+    drop.pack(anchor=NW, side=LEFT)
 
     btn = create_btn(frame, 'select',
                      lambda: create_label(frame, get_workers_name(clicked.get())))
-    btn.pack(pady=20)
+    btn.pack(anchor=NE)
 
 
 def create_label(frame, text):
@@ -31,5 +31,5 @@ def create_label(frame, text):
     if label_exists:
         label_exists.destroy()
 
-    label_exists = Label(frame, text=text, bg=content_bg)
+    label_exists = Label(frame, text=text, bg=content_bg, font='Georgia')
     label_exists.pack()
