@@ -33,8 +33,8 @@ def create_input(frame):
         entry.pack()
         entries_arr.append(entry)
 
-    frm_buttons = create_btn(frame, 'Clear', lambda: clear_data(entries_arr))
+    frm_buttons = create_btn(frame, 'Очистити', lambda: clear_data(entries_arr))
     frm_buttons.pack(side=LEFT, padx=80, ipadx=10)
 
-    btn_submit = create_btn(frame, "Submit", lambda: put_data(entries_arr))
+    btn_submit = create_btn(frame, "Зберегти", lambda: put_data(entries_arr))
     btn_submit.pack(side=RIGHT, padx=80, ipadx=10)
