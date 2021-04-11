@@ -18,18 +18,18 @@ def create_select(frame):
     clicked.set(options[0])
 
     btn = create_btn(frame, 'Обрати',
-                     lambda: create_label(frame, get_workers_name(clicked.get())))
+                     lambda: create_label_names(frame, get_workers_name(clicked.get())))
     btn.pack(anchor=NE, side=LEFT, padx=5, pady=30)
 
     drop = OptionMenu(frame, clicked, *options)
     drop.pack(anchor=NW, side=LEFT, pady=30)
 
 
-def create_label(frame, text):
+def create_label_names(frame, text):
     global label_exists
 
     if label_exists:
         label_exists.destroy()
 
-    label_exists = Label(frame, text=text, bg=content_bg, font='Georgia')
+    label_exists = create_label(frame, text)
     label_exists.pack(anchor=SW, pady=80, padx=20)

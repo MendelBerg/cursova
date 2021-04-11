@@ -1,6 +1,6 @@
 from tkinter import (Label, Entry, messagebox,
                      LEFT, RIGHT)
-from tools import create_btn, content_bg
+from tools import create_btn, create_label
 
 
 def put_data(entries_arr):
@@ -28,7 +28,7 @@ def create_input(frame):
 
     entries_arr = []
     for text in labels:
-        Label(master=frame, text=text, bg=content_bg).pack(pady=5)
+        create_label(frame, text, size=11).pack(pady=5)
         entry = Entry(frame, width=25)
         entry.pack()
         entries_arr.append(entry)

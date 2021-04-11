@@ -8,7 +8,7 @@ font_title = 18
 
 def create_frame_content(title, size=font_title):
     content = Frame()
-    label = Label(content, text=title, bg=content_bg, fg="#1A2026", font=f"Georgia {size} bold")
+    label = create_label(content, title, "#1A2026", size, 'bold')
     label.pack()
     content.place(relx=0.24, rely=0, relwidth=0.76, relheight=1)
     content['bg'] = content_bg
@@ -19,6 +19,10 @@ def create_frame_content(title, size=font_title):
 
 def create_btn(frame, text, command):
     return Button(frame, text=text, command=command)
+
+
+def create_label(frame, text, clr='#000', size=12, weight='normal'):
+    return Label(frame, text=text, bg=content_bg, font=f"Georgia {size} {weight}", fg=clr)
 
 
 def get_arr_notes():

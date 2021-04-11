@@ -17,9 +17,9 @@ def btn_click_staff():
 
 def btn_click_age():
     from Interfaces.content.middle_age_exp import fill_content
-    create_frame_content(fill_content('середній вік'))
+    fill_content(create_frame_content('Cередній вік працівників')['frame'], 'age')
 
 
 def btn_click_exp():
     from Interfaces.content.middle_age_exp import fill_content
-    create_frame_content(fill_content('найменший досвід'))
+    fill_content(create_frame_content('Працівники з найменшим досвідом')['frame'])

@@ -1,7 +1,7 @@
 from tools import *
 
 
-def show_small_exp():
+def get_small_exp():
     min_exp_staff = []
     min_exp = 0
 
@@ -15,10 +15,10 @@ def show_small_exp():
         min_exp_staff.append({'name': worker.name, 'unit': worker.unit, 'years': worker.exp})
         min_exp = 0
 
-    return sort_dict_arr(min_exp_staff, 'name')
+    return sort_dict_arr(min_exp_staff)
 
 
-def show_middle_age():
+def get_middle_age():
     from datetime import datetime as date
     middle_age_arr = []
 
@@ -31,29 +31,30 @@ def show_middle_age():
             )
         })
 
-    return sort_dict_arr(middle_age_arr, 'unit')
+    return sort_dict_arr(middle_age_arr)
 
 
-def sort_dict_arr(staff, key):
+def sort_dict_arr(staff):
     for top in range(1, len(staff)):
         i = top
-        while i > 0 and staff[i - 1][key] > staff[i][key]:
+        while i > 0 and staff[i - 1]['unit'] > staff[i]['unit']:
             staff[i], staff[i - 1] = staff[i - 1], staff[i]
             i -= 1
     return staff
 
 
-def fill_content(title):
-    data = show_middle_age() if title == 'середній вік' else show_small_exp()
+def fill_content(frame, flag='exp'):
+    data = get_middle_age() if flag == 'age' else get_small_exp()
     text_arr = []
     for worker in data:
         year = add_end_year(worker['years'])
-        text_arr.append(f'Підрозділ "{worker["unit"]}", {worker["years"]} {year}.\n'
-                        if len(data[0]) == 2 else
-                        f'Працівник {worker["name"]}, підрозділ "{worker["unit"]}", стаж {worker["years"]} {year}.\n '
-                        )
+        end_of_line = f'{worker["years"]} {year}' if len(data[0]) == 2 \
+            else f'{worker["name"]} - {worker["years"]} {year} стажу'
 
-    return f"Данні про {title} працівників\n\n{''.join(text_arr).strip()}"
+        text_arr.append(f'Підрозділ "{worker["unit"]}", ' + end_of_line + '.\n\n')
+
+    label = create_label(frame, ''.join(text_arr).strip())
+    label.pack(pady=30)
 
 
 def add_end_year(num):
