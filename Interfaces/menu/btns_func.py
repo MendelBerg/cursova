@@ -2,7 +2,7 @@ from tools import create_frame_content
 
 
 def btn_click_main():
-    create_frame_content('Дані працівників ТОВ\n"Снігова корова"')
+    create_frame_content('Антарктичний м\'ясокомбінат\n"Снігова корова"')
 
 
 def btn_click_put():
