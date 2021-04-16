@@ -6,6 +6,7 @@ def find_errors(entries_arr):
     notes = [e.get() for e in entries_arr]
     errors_messages = {}
     dict_errors = {
+        'empty': 'поле повинно бути заповнене!',
         'digits': 'Код повинен складатися лише з чисел!',
         'len': 'Код повинен складатися з чотирьох чисел!',
         'alphabetic': 'Поле має скаладтися лише з літер',
@@ -18,8 +19,9 @@ def find_errors(entries_arr):
     for i in dict_errors:
         errors_messages[i] = []
 
-    if '' in notes:
-        print('Ви заповнили не всі поля!')
+    for note in notes:
+        if notes[note] == '':
+            errors_messages['empty'].append(note)
 
     for note in range(len(notes)):
         if notes[note] != '':
@@ -46,9 +48,12 @@ def find_errors(entries_arr):
             if count[2] < 6:
                 errors_messages['full father_name'].append(1)
 
-    for x in errors_messages:
-        print(f'{x} => \'{errors_messages[x]}\'')
-
+    # Зберегти всі повідомлення в одну змінну і вивести їх в одному  messagebox.showwarning під параметром message
+    # НАЗВА УСІХ ПОЛІВ, ЯКІ ВІДНОСЯТЬСЯ ДО ПОМИЛКИ => ПОВІДОМЛЕННЯ
+    # errors_text = ''
+    # for error in errors_messages:
+    #     if errors_messages[error]:
+    #         for x in
 
 def put_data(entries_arr):
     notes = [e.get() for e in entries_arr]
