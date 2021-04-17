@@ -25,8 +25,8 @@ def create_label(frame, text, clr='#000', size=12, weight='normal'):
     return Label(frame, text=text, bg=content_bg, font=f"Georgia {size} {weight}", fg=clr)
 
 
-def get_arr_notes():
-    with open('../data/notes.txt', 'r') as file:
+def get_arr_notes(path='../'):
+    with open(f'{path}data/notes.txt', 'r') as file:
         return [
             Notes(
                 *[int(y) if y.strip().isdigit() else y.title() for y in x.split(', ')]
@@ -41,6 +41,15 @@ def sort_arr(staff):
             staff[i], staff[i - 1] = staff[i - 1], staff[i]
             i -= 1
 
+    return staff
+
+
+def sort_dict_arr(staff, key):
+    for top in range(1, len(staff)):
+        i = top
+        while i > 0 and staff[i - 1][key] > staff[i][key]:
+            staff[i], staff[i - 1] = staff[i - 1], staff[i]
+            i -= 1
     return staff
 
 

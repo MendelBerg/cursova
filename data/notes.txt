@@ -5,9 +5,3 @@
 1004, Воєводін О.0., 1976, викладач, керівники, 15, 10050
 134, Фіва, 2000, фіва, жриці, 40, 3241
 1234, Мартушка, 1990, фівафа, жриці, 20, 10
-a, 123, 1, 123421431243, 1324, adssadfasdf, sdfgdsfg
-q, a a a, q, 123, 123, q, q
-1111, adsfadsf asdasdfa adsfadsfasdf, 1111, aasdfasdfadf, sdfasdfa, 111, 11
-1111, asfadf asdasdsf adsfsdfasfd, 1111, kjgjg, kjghkjhg, 111, 111
-1111, asdfasdf asdfasdfaf asdfadfasdf, 1111, sdfasdfasdf, sdfasdfads, 11, 11
-1111, asdfsadf asdf asdfasdfadf, 1111, adsasdfa, asdfasdf, 1, 1
