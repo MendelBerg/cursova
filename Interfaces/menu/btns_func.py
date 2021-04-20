@@ -1,4 +1,6 @@
 from tools import create_frame_content
+from Interfaces.content.middle_age_exp import fill_content
+from tkinter import *
 
 
 def btn_click_main():
@@ -16,10 +18,13 @@ def btn_click_staff():
 
 
 def btn_click_age():
-    from Interfaces.content.middle_age_exp import fill_content
     fill_content(create_frame_content('Cередній вік працівників')['frame'], 'age')
 
 
 def btn_click_exp():
-    from Interfaces.content.middle_age_exp import fill_content
     fill_content(create_frame_content('Працівники з найменшим досвідом')['frame'])
+
+
+def btn_click_struct():
+    from Interfaces.content.struct import show_struct
+    show_struct()

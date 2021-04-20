@@ -10,7 +10,7 @@ def create_frame_content(title, size=font_title):
     content = Frame()
     label = create_label(content, title, "#1A2026", size, 'bold')
     label.pack()
-    content.place(relx=0.24, rely=0, relwidth=0.76, relheight=1)
+    content.place(relx=0.165, rely=0, relwidth=0.85, relheight=1)
     content['bg'] = content_bg
     content['width'] = '500'
 

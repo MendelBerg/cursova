@@ -1,4 +1,3 @@
-from tkinter import Frame
 from Interfaces.menu.btns_func import *
 from tools import create_btn
 
@@ -26,8 +25,9 @@ btn_put = create_btn(menu, "Створити запис", lambda: btn_active(btn
 btn_get_staff = create_btn(menu, "Список працівників", lambda: btn_active(btn_click_staff)(btn_get_staff))
 btn_get_age = create_btn(menu, "Середній вік", lambda: btn_active(btn_click_age)(btn_get_age))
 btn_get_exp = create_btn(menu, "Найменший стаж", lambda: btn_active(btn_click_exp)(btn_get_exp))
+btn_get_struct = create_btn(menu, "Структура", lambda: btn_active(btn_click_struct)(btn_get_struct))
 
-menu_btn_arr = [btn_main, btn_put, btn_get_staff, btn_get_age, btn_get_exp]
+menu_btn_arr = [btn_main, btn_put, btn_get_staff, btn_get_age, btn_get_exp, btn_get_struct]
 
 for row, btn in enumerate(menu_btn_arr):
     btn.grid(row=row, column=0, sticky="ew", padx=5, pady=5)
