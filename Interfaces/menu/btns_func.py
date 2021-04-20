@@ -30,5 +30,5 @@ def btn_click_struct():
 
 
 def btn_del_note():
-    from Interfaces.content.delete_note import del_note
-    del_note()
+    from Interfaces.content.delete_note import show_del_modal
+    show_del_modal()
