@@ -18,7 +18,7 @@ def get_struct():
 def show_struct():
     root = Tk()
     root.title("Список працівників")
-    root.geometry('1110x700')
+    root.geometry('750x470')
     scrollbar = Scrollbar(root, bg='#1A2026')
     scrollbar.pack(side=RIGHT, fill=Y)
 
@@ -28,7 +28,7 @@ def show_struct():
     for line in d:
         for data in d[line]:
             my_list.insert(END, data)
-        my_list.insert(END, '===========================')
+        my_list.insert(END, '')
 
     my_list.pack(side=LEFT, fill=BOTH, ipady=100, ipadx=1000)
     scrollbar.config(command=my_list.yview)
