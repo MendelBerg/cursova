@@ -1,6 +1,5 @@
 from tools import create_frame_content
 from Interfaces.content.middle_age_exp import fill_content
-from tkinter import *
 
 
 def btn_click_main():

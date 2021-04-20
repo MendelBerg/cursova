@@ -1,3 +1,4 @@
+from tkinter import Frame
 from Interfaces.menu.btns_func import *
 from tools import create_btn
 
