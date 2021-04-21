@@ -2,6 +2,9 @@ from tools import *
 
 
 flag = True
+root_g = Tk()
+scrollbar_g = Scrollbar(root_g, bg='#1A2026')
+my_list_g = Listbox(root_g, yscrollcommand=scrollbar_g.set, font=f"Georgia 20", bg=content_bg)
 
 
 def get_struct(option):
@@ -15,8 +18,8 @@ def get_struct(option):
     return dict_text
 
 
-def show_struct():
-    root = Tk()
+def show_struct(root=root_g, scrollbar=scrollbar_g, my_list=my_list_g):
+    # root = Tk()
     root.title("Список працівників")
     root.geometry('750x470')
 
@@ -25,10 +28,10 @@ def show_struct():
     btn = create_btn(root, 'OK', lambda: root.destroy())
     btn.pack(side=BOTTOM, padx=30, ipadx=10)
 
-    scrollbar = Scrollbar(root, bg='#1A2026')
+    # scrollbar = Scrollbar(root, bg='#1A2026')
     scrollbar.pack(side=RIGHT, fill=Y)
 
-    my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
+    # my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
     struct_notes = get_struct(0)
 
     for line in struct_notes:
