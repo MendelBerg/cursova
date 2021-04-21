@@ -1,5 +1,5 @@
 from tkinter import messagebox
-from tools import labels
+from tools import *
 
 dict_errors = {
     'empty': 'Поле повинно бути заповнене!',
@@ -39,12 +39,13 @@ def is_alpha(index_arr, notes):
             errors_messages[note].append('alphabetic')
 
 
-def check_name(note):
+def check_name(index, notes):
+    note = notes[index]
     count = [len(x) for x in note.strip().split(' ')]
 
     if note != '':
         if len(note.strip().split(' ')) != 3:
-            errors_messages[1].append('full name')
+            errors_messages[index].append('full name')
         elif note.replace(' ', '').isalpha():
             if count[0] < 2:
                 errors_messages[1].append('full lname')
@@ -63,13 +64,42 @@ def find_errors(entries_arr):
     is_digit([0, 2, 5, 6], notes)
     wrong_len([0, 2], notes)
     is_alpha([1, 3, 4], notes)
-    check_name(notes[1])
+    check_name(1, notes)
 
-    errors_text = ''
+    errors_arr = []
     for field in errors_messages:
         if errors_messages[field]:
-            errors_text += f'{labels[field]}:' + '\n' + \
-                           '\n'.join([dict_errors[error] for error in errors_messages[field]]) + \
-                           '\n\n'
+            errors_arr.append([f'{labels[field]}:',
+                               [dict_errors[error] for error in errors_messages[field]]
+                               ])
 
-    return messagebox.showwarning(title='Обережно!', message=errors_text) if errors_text else False
+    return errors_modal(errors_arr) if errors_arr else False
+
+
+def errors_modal(text):
+    root = Tk()
+    root.title("Помилка вводу")
+    root.geometry('750x470')
+
+    scrollbar = Scrollbar(root, bg='#1A2026')
+    scrollbar.pack(side=RIGHT, fill=Y)
+
+    my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
+
+    for error in text:
+        my_list.insert(END, error[0])
+        for line in error[1]:
+            my_list.insert(END, line)
+
+        my_list.insert(END, '')
+
+    my_list.pack(side=LEFT, fill=BOTH, ipady=100, ipadx=1000)
+    scrollbar.config(command=my_list.yview)
+
+    btn = create_btn(root, 'Ok', lambda: print('Ok'))
+    btn.pack(side=LEFT, padx=80, ipadx=10)
+
+    root.mainloop()
+
+
+
