@@ -36,6 +36,4 @@ def btn_del_note():
 
 def btn_click_exit():
     from Interfaces.init import window
-    from Interfaces.content.struct import root as struct
-    struct.destroy()
     window.destroy()

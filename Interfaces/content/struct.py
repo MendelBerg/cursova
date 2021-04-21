@@ -2,9 +2,8 @@ from tools import *
 
 
 flag = False
-root = Tk()
-scrollbar = Scrollbar(root, bg='#1A2026')
-my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
+global root, scrollbar, my_list
+
 
 
 def get_struct(option):
@@ -19,9 +18,13 @@ def get_struct(option):
 
 
 def show_struct():
-    global root
+    global root, scrollbar, my_list
+    root = Tk()
     root.title("Список працівників")
     root.geometry('750x470')
+
+    scrollbar = Scrollbar(root, bg='#1A2026')
+    my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
 
     btn = create_btn(root, 'Сортувати', lambda: struct_content())
     btn.pack(side=TOP, padx=80, ipadx=10)
