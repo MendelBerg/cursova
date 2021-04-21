@@ -40,6 +40,7 @@ def show_struct():
     scrollbar.config(command=my_list.yview)
 
 
+# scrollbar and my_list need to be global to destroy them by calling struct_content
 def struct_content(root, scroll, lst):
     scroll.destroy()
     lst.destroy()
