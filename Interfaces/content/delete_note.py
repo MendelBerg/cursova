@@ -15,6 +15,7 @@ def del_note(code, root):
 
 def show_del_modal():
     root = Tk()
+    root.title("Введіть код")
     entry = Entry(root, width=17)
     entry.pack()
     btn = create_btn(root, 'Видалити', lambda: del_note(int(entry.get()), root))
