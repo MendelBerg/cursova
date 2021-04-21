@@ -32,3 +32,10 @@ def btn_click_struct():
 def btn_del_note():
     from Interfaces.content.delete_note import show_del_modal
     show_del_modal()
+
+
+def btn_click_exit():
+    from Interfaces.init import window
+    from Interfaces.content.struct import root as struct
+    struct.destroy()
+    window.destroy()
