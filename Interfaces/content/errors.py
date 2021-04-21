@@ -78,6 +78,8 @@ def find_errors(entries_arr):
 
 def errors_modal(text):
     root = Tk()
+    btn = create_btn(root, 'Ok', lambda: root.destroy())
+    btn.pack(side=BOTTOM, padx=90, ipadx=10)
     root.title("Помилка вводу")
     root.geometry('750x470')
 
@@ -96,10 +98,6 @@ def errors_modal(text):
     my_list.pack(side=LEFT, fill=BOTH, ipady=100, ipadx=1000)
     scrollbar.config(command=my_list.yview)
 
-    btn = create_btn(root, 'Ok', lambda: print('Ok'))
-    btn.pack(side=LEFT, padx=80, ipadx=10)
-
     root.mainloop()
-
     return True
 
