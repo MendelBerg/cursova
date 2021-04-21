@@ -5,6 +5,9 @@ Notes = namedtuple("Notes", "code name birth_year position unit exp money")
 content_bg = '#D5D5D5'
 font_title = 18
 
+labels = ["Код", "ПІБ", "Рік народження", "Посада",
+          "Підрозділ", "Досвід роботи (в роках)", "Зарплатня"]
+
 
 def create_frame_content(title, size=font_title):
     content = Frame()
