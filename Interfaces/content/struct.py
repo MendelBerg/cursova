@@ -1,7 +1,10 @@
 from tools import *
 
 
-def get_struct(option=0):
+flag = True
+
+
+def get_struct(option):
     dict_text = {}
     i = 0
     for person in sort_dict_arr(get_arr_notes('../'), option):
@@ -17,20 +20,41 @@ def show_struct():
     root.title("Список працівників")
     root.geometry('750x470')
 
-    btn = create_btn(root, 'Other', lambda: get_struct(4))
+    btn = create_btn(root, 'Other', lambda: struct_content(root, scrollbar, my_list))
     btn.pack(side=TOP, padx=80, ipadx=10)
     btn = create_btn(root, 'OK', lambda: root.destroy())
     btn.pack(side=BOTTOM, padx=30, ipadx=10)
 
-    struct_content(root)
-
-
-def struct_content(root):
     scrollbar = Scrollbar(root, bg='#1A2026')
     scrollbar.pack(side=RIGHT, fill=Y)
 
     my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
-    struct_notes = get_struct()
+    struct_notes = get_struct(0)
+
+    for line in struct_notes:
+        for data in struct_notes[line]:
+            my_list.insert(END, data)
+        my_list.insert(END, '')
+
+    my_list.pack(side=LEFT, fill=BOTH, ipady=100, ipadx=1000)
+    scrollbar.config(command=my_list.yview)
+
+
+def struct_content(root, scroll, lst):
+    scroll.destroy()
+    lst.destroy()
+    scrollbar = Scrollbar(root, bg='#1A2026')
+    scrollbar.pack(side=RIGHT, fill=Y)
+
+    my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
+
+    global flag
+    if flag:
+        struct_notes = get_struct(4)
+        flag = False
+    else:
+        struct_notes = get_struct(0)
+        flag = True
 
     for line in struct_notes:
         for data in struct_notes[line]:
