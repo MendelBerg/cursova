@@ -101,5 +101,5 @@ def errors_modal(text):
 
     root.mainloop()
 
-
+    return True
 
