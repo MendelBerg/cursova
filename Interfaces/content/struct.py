@@ -5,7 +5,6 @@ flag = False
 global root, scrollbar, my_list
 
 
-
 def get_struct(option):
     dict_text = {}
     i = 0

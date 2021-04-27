@@ -1,4 +1,4 @@
-from tkinter import Frame, BOTTOM
+from tkinter import Frame
 from Interfaces.menu.btns_func import *
 from tools import create_btn
 
