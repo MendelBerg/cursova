@@ -8,10 +8,10 @@ global root, scrollbar, my_list
 def get_struct(option):
     dict_text = {}
     i = 0
-    for person in sort_dict_arr(get_arr_notes('../'), option):
+    for person in sort_dict_arr(get_arr_notes(''), option):
         dict_text[i] = []
         for data in range(len(person)):
-            dict_text[i].append(f'{labels[data]}: {person[data]}')
+            dict_text[i].append(person[data])
         i += 1
     return dict_text
 
