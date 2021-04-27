@@ -1,14 +1,8 @@
-import tkinter as tk
 import tkinter.ttk as ttk
 from tools import *
 
-btn = None
-table = None
-flag = False
-table_struct = None
 
-
-class Table(tk.Frame):
+class Table(Frame):
     def __init__(self, parent=None, headings=tuple(), rows=tuple()):
         super().__init__(parent)
 
@@ -17,16 +11,16 @@ class Table(tk.Frame):
         table["displaycolumns"] = headings
 
         for head in headings:
-            table.heading(head, text=head, anchor=tk.CENTER)
-            table.column(head, anchor=tk.CENTER)
+            table.heading(head, text=head, anchor=CENTER)
+            table.column(head, anchor=CENTER)
 
         for row in rows:
-            table.insert('', tk.END, values=tuple(row))
+            table.insert('', END, values=tuple(row))
 
-        scrolltable = tk.Scrollbar(self, bg='#1A2026', command=table.yview)
+        scrolltable = Scrollbar(self, bg='#1A2026', command=table.yview)
         table.configure(yscrollcommand=scrolltable.set)
-        scrolltable.pack(side=tk.RIGHT, fill=tk.Y)
-        table.pack(expand=tk.YES, fill=tk.BOTH)
+        scrolltable.pack(side=RIGHT, fill=Y)
+        table.pack(expand=YES, fill=BOTH)
 
 
 def get_struct(option):
@@ -41,35 +35,17 @@ def get_struct(option):
 
 
 def show_struct():
-    global btn, table, flag
-    if btn and table:
-        table.destroy()
-        btn.destroy()
-
-    if flag:
-        struct_notes = get_struct(4)
-        flag = False
-    else:
-        struct_notes = get_struct(0)
-        flag = True
-
-    table = Table(table_struct, headings=labels, rows=(
-        struct_notes.values()
-    ))
-    table.pack(expand=tk.YES, fill=tk.BOTH)
-    # btn = Button(text='OK', command=lambda: table_struct.destroy())
-    # btn.pack()
-
-
-def f():
-    global table_struct
-    table_struct = tk.Tk()
+    table_struct = Tk()
     table_struct.title("Список працівників")
     table_struct['bg'] = content_bg
-    # Button(text='Сортувати', command=lambda: show_struct()).pack()
 
-    show_struct()
+    struct_notes = get_struct(0)
 
+    table = Table(table_struct, headings=labels, rows=(
+        tuple(struct_notes.values())
+    ))
+    table.pack(expand=YES, fill=BOTH)
     table_struct.mainloop()
 
-f()
+
+
