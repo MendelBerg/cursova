@@ -1,14 +1,38 @@
+import tkinter as tk
+import tkinter.ttk as ttk
 from tools import *
 
-
+btn = None
+table = None
 flag = False
-global root, scrollbar, my_list
+table_struct = None
+
+
+class Table(tk.Frame):
+    def __init__(self, parent=None, headings=tuple(), rows=tuple()):
+        super().__init__(parent)
+
+        table = ttk.Treeview(self, show="headings", selectmode="browse")
+        table["columns"] = headings
+        table["displaycolumns"] = headings
+
+        for head in headings:
+            table.heading(head, text=head, anchor=tk.CENTER)
+            table.column(head, anchor=tk.CENTER)
+
+        for row in rows:
+            table.insert('', tk.END, values=tuple(row))
+
+        scrolltable = tk.Scrollbar(self, bg='#1A2026', command=table.yview)
+        table.configure(yscrollcommand=scrolltable.set)
+        scrolltable.pack(side=tk.RIGHT, fill=tk.Y)
+        table.pack(expand=tk.YES, fill=tk.BOTH)
 
 
 def get_struct(option):
     dict_text = {}
     i = 0
-    for person in sort_dict_arr(get_arr_notes(''), option):
+    for person in sort_dict_arr(get_arr_notes('../'), option):
         dict_text[i] = []
         for data in range(len(person)):
             dict_text[i].append(person[data])
@@ -17,30 +41,10 @@ def get_struct(option):
 
 
 def show_struct():
-    global root, scrollbar, my_list
-    root = Tk()
-    root.title("Список працівників")
-    root.geometry('750x470')
-
-    scrollbar = Scrollbar(root, bg='#1A2026')
-    my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
-
-    btn = create_btn(root, 'Сортувати', lambda: struct_content())
-    btn.pack(side=TOP, padx=80, ipadx=10)
-    btn = create_btn(root, 'OK', lambda: root.destroy())
-    btn.pack(side=BOTTOM, padx=30, ipadx=10)
-
-    struct_content()
-
-
-def struct_content():
-    global scrollbar, my_list, root, flag
-    scrollbar.destroy()
-    my_list.destroy()
-    scrollbar = Scrollbar(root, bg='#1A2026')
-    scrollbar.pack(side=RIGHT, fill=Y)
-
-    my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
+    global btn, table, flag
+    if btn and table:
+        table.destroy()
+        btn.destroy()
 
     if flag:
         struct_notes = get_struct(4)
@@ -49,10 +53,23 @@ def struct_content():
         struct_notes = get_struct(0)
         flag = True
 
-    for line in struct_notes:
-        for data in struct_notes[line]:
-            my_list.insert(END, data)
-        my_list.insert(END, '')
+    table = Table(table_struct, headings=labels, rows=(
+        struct_notes.values()
+    ))
+    table.pack(expand=tk.YES, fill=tk.BOTH)
+    # btn = Button(text='OK', command=lambda: table_struct.destroy())
+    # btn.pack()
 
-    my_list.pack(side=LEFT, fill=BOTH, ipady=100, ipadx=1000)
-    scrollbar.config(command=my_list.yview)
+
+def f():
+    global table_struct
+    table_struct = tk.Tk()
+    table_struct.title("Список працівників")
+    table_struct['bg'] = content_bg
+    # Button(text='Сортувати', command=lambda: show_struct()).pack()
+
+    show_struct()
+
+    table_struct.mainloop()
+
+f()

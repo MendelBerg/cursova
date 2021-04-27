@@ -25,8 +25,8 @@ def btn_click_exp():
 
 
 def btn_click_struct():
-    from Interfaces.content.struct import show_struct
-    show_struct()
+    from Interfaces.content.struct import f
+    f()
 
 
 def btn_del_note():
