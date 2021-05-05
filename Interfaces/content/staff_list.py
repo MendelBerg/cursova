@@ -19,10 +19,11 @@ def create_select(frame):
 
     btn = create_btn(frame, 'Обрати',
                      lambda: create_label_names(frame, get_workers_name(clicked.get())))
-    btn.pack(anchor=NE, side=LEFT, padx=5, pady=30)
+    btn.pack(anchor=NE, side=RIGHT, padx=5, pady=30)
 
     drop = OptionMenu(frame, clicked, *options)
-    drop.pack(anchor=NW, side=LEFT, pady=30)
+    drop['width'] = 10
+    drop.pack(anchor=NW, side=LEFT, padx=5, pady=30)
 
 
 def create_label_names(frame, text):

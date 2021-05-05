@@ -39,9 +39,9 @@ def fill_content(frame, flag='exp'):
     for worker in data:
         year = add_end_year(worker[1] if len(data[0]) == 2 else worker.exp)
         end_of_line = f'"{worker[0]}", {worker[1]} {year}' if len(data[0]) == 2 \
-            else f'"{worker.unit}", {worker.name} - {worker.exp} {year} стажу'
+            else f'"{worker.unit}":\n{worker.name} - {worker.exp} {year} стажу'
 
-        text_arr.append(f'Підрозділ ' + end_of_line + '.\n\n')
+        text_arr.append(f'Підрозділ ' + end_of_line + '\n\n')
 
     label = create_label(frame, ''.join(text_arr).strip())
     label.pack(pady=30)

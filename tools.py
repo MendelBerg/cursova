@@ -24,7 +24,7 @@ def create_btn(frame, text, command, bg=content_bg):
     return Button(frame, text=text, command=command, bg=bg)
 
 
-def create_label(frame, text, clr='#000', size=12, weight='normal'):
+def create_label(frame, text, clr='#000', size=14, weight='normal'):
     return Label(frame, text=text, bg=content_bg, font=f"Georgia {size} {weight}", fg=clr)
 
 
