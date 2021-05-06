@@ -86,7 +86,7 @@ def errors_modal(text):
     scrollbar = Scrollbar(root, bg='#1A2026')
     scrollbar.pack(side=RIGHT, fill=Y)
 
-    my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg)
+    my_list = Listbox(root, yscrollcommand=scrollbar.set, font=f"Georgia 20", bg=content_bg, justify='center')
 
     for error in text:
         my_list.insert(END, error[0])
